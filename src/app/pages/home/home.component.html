@@ -1,0 +1,52 @@
+<div class="col-12 mt-5 d-flex flex-column justify-content-center align-items-center">
+
+    <form class="col-6" [formGroup]="form" (ngSubmit)="Onsubmit()" #frmDir="ngForm">
+        <div class="row mb-5">
+            <div class="mb-3 col-6">
+                <label for="nome" class="form-label">Nome</label>
+                <input type="text" formControlName="nome" name="nome" class="form-control" id="nome">
+            </div>
+            <div class="mb-3 col-6">
+                <label for="cpf" class="form-label">Cpf</label>
+                <input type="text" formControlName="cpf" name="cpf" class="form-control" id="cpf">
+            </div>
+        </div>
+
+
+        <div class="" formArrayName="contatos">
+            <ng-container *ngFor="let _ of contatos.controls, let idx=index">
+                <ng-container [formGroupName]="idx">
+                    <p class="text-center fw-bold">Contato {{idx + 1}}</p>
+                    <div class="mb-3">
+                        <label for="cemail" class="form-label">Email</label>
+                        <input type="email" formControlName="email" name="email" class="form-control" id="email">
+                    </div>
+                    <div class="row">
+                        <div class="mb-3 col-6">
+                            <label for="telefone" class="form-label">Telefone</label>
+                            <input type="tel" formControlName="telefone" name="telefone" class="form-control"
+                                id="telefone">
+                        </div>
+                        <div class="mb-3 col-6">
+                            <label for="celular" class="form-label">Celular</label>
+                            <input type="tel" formControlName="celular" name="celular" class="form-control"
+                                id="celular">
+                        </div>
+                    </div>
+                    <div class="mb-3 d-flex justify-content-end">
+                        <button type="button" (click)="removerContato(idx)" class="btn btn-danger">
+                            <span>x</span>
+                        </button>
+                    </div>
+                </ng-container>
+            </ng-container>
+        </div>
+
+        <div class="mb-3 d-flex justify-content-end">
+            <button type="button" (click)="gerarMaisContatos()" class="btn btn-warning w-25">Adicionar</button>
+        </div>
+        <div class="mb-3 d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary w-25">Submit</button>
+        </div>
+    </form>
+</div>

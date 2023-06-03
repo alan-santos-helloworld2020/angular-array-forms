@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit {
   }
 
   removerContato(idx:number){
-    this.contatos.removeAt(idx);
+    idx > 0  ? this.contatos.removeAt(idx):false;
   }
 
 

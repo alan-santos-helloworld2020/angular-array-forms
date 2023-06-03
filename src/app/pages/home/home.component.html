@@ -1,7 +1,7 @@
 <div class="col-12 mt-5 d-flex flex-column justify-content-center align-items-center">
 
     <form class="col-6" [formGroup]="form" (ngSubmit)="Onsubmit()" #frmDir="ngForm">
-        <div class="row mb-5">
+        <div class="row mb-3">
             <div class="mb-3 col-6">
                 <label for="nome" class="form-label">Nome</label>
                 <input type="text" formControlName="nome" name="nome" class="form-control" id="nome">
@@ -16,28 +16,28 @@
         <div class="" formArrayName="contatos">
             <ng-container *ngFor="let _ of contatos.controls, let idx=index">
                 <ng-container [formGroupName]="idx">
-                    <p class="text-center fw-bold">Contato {{idx + 1}}</p>
-                    <div class="mb-3">
-                        <label for="cemail" class="form-label">Email</label>
-                        <input type="email" formControlName="email" name="email" class="form-control" id="email">
-                    </div>
-                    <div class="row">
-                        <div class="mb-3 col-6">
-                            <label for="telefone" class="form-label">Telefone</label>
-                            <input type="tel" formControlName="telefone" name="telefone" class="form-control"
-                                id="telefone">
+                        <p class="fw-bold">Contato {{idx + 1}}</p>
+                        <div class="mb-3">
+                            <label for="cemail" class="form-label">Email</label>
+                            <input type="email" formControlName="email" name="email" class="form-control" id="email">
                         </div>
-                        <div class="mb-3 col-6">
-                            <label for="celular" class="form-label">Celular</label>
-                            <input type="tel" formControlName="celular" name="celular" class="form-control"
-                                id="celular">
+                        <div class="row">
+                            <div class="mb-3 col-6">
+                                <label for="telefone" class="form-label">Telefone</label>
+                                <input type="tel" formControlName="telefone" name="telefone" class="form-control"
+                                    id="telefone">
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label for="celular" class="form-label">Celular</label>
+                                <input type="tel" formControlName="celular" name="celular" class="form-control"
+                                    id="celular">
+                            </div>
                         </div>
-                    </div>
-                    <div class="mb-3 d-flex justify-content-end">
-                        <button type="button" (click)="removerContato(idx)" class="btn btn-danger">
-                            <span>x</span>
-                        </button>
-                    </div>
+                        <div *ngIf="idx > 0" class="mb-3 d-flex justify-content-end">
+                            <button type="button" (click)="removerContato(idx)" class="btn btn-danger rounded-circle">
+                                <span>x</span>
+                            </button>
+                        </div>
                 </ng-container>
             </ng-container>
         </div>
